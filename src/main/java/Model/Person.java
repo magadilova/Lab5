@@ -1,11 +1,17 @@
 package Model;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+
 public class Person {
     private String name; //Поле не может быть null, Строка не может быть пустой
     private String passportID; //Значение этого поля должно быть уникальным, Поле не может быть null
+    @XStreamAlias("eyeColor")
     private EyeColor eyeColor; //Поле не может быть null
+    @XStreamAlias("hairColor")
     private HairColor hairColor; //Поле не может быть null
+    @XStreamAlias("country")
     private Country nationality; //Поле может быть null
+    @XStreamAlias("location")
     private Location location; //Поле может быть null
 
     public Person(String name, String passportID, EyeColor eyeColor, HairColor hairColor, Country nationality, float LocationX, double LocationY, double LocationZ) {
@@ -73,7 +79,7 @@ public class Person {
                 ", eyeColor=" + eyeColor +
                 ", hairColor=" + hairColor +
                 ", nationality=" + nationality +
-                ", location=" + location +
+                ", location=" + location.toString() +
                 '}';
     }
 }

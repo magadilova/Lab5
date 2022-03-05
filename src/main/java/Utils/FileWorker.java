@@ -6,7 +6,7 @@ import java.io.FileReader;
 public class FileWorker {
     public static String readFile(){
         StringBuilder data = new StringBuilder();
-        try (BufferedReader br = new BufferedReader(new FileReader("C:/test.txt"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(""))) {
             String line;
             while ((line = br.readLine()) != null) {
                data.append(line);

@@ -1,6 +1,7 @@
 import Model.*;
 import Utils.XmlWorker;
 
+import java.sql.SQLOutput;
 import java.util.*;
 
 public class Main {
@@ -24,6 +25,6 @@ public class Main {
         set.clear();
         set.addAll(treeSet);
 
-//        XmlWorker.toXml(set);
+        XmlWorker.toXml(set);
     }
 }
