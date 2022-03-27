@@ -1,10 +1,9 @@
 package Model;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
-import com.thoughtworks.xstream.annotations.XStreamImplicit;
-
 import java.time.LocalDate;
 import java.util.UUID;
+
 @XStreamAlias("product")
 public class Product implements Comparable<Product> {
     private long id; //Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
@@ -20,16 +19,16 @@ public class Product implements Comparable<Product> {
     @XStreamAlias("person")
     private Person owner; //Поле не может быть null
 
-    public Product(String name, int coordinatesX,long coordinatesY, double price, String partNumber, long manufactureCost, UnitOfMeasure unitOfMeasure, Person person1) {
+    public Product(String name, Coordinates coordinates, double price, String partNumber, long manufactureCost, UnitOfMeasure unitOfMeasure, Person owner) {
         this.id = this.uniqueId();
-        this.name = name;
-        this.coordinates = new Coordinates(coordinatesX,coordinatesY);
-        this.creationDate = LocalDate.now();
-        this.price = price;
+        this.setName(name);
+        this.setCoordinates(coordinates);
+        this.setCreationDate();
+        this.setPrice(price);
         this.partNumber = partNumber;
         this.manufactureCost = manufactureCost;
         this.unitOfMeasure = unitOfMeasure;
-        this.owner = person1;
+        this.setOwner(owner);
     }
 
     /**
@@ -43,18 +42,86 @@ public class Product implements Comparable<Product> {
 
     /**
      *
+     * @param name
+     */
+
+    public void setName(String name) {
+        if (name == null){
+            throw new FieldException("Exception: Field 'name' can not be null \n Please try again");
+        }
+        if (name.isEmpty()){
+            throw new FieldException("Exception: Field 'name' can not be empty \n Please try again");
+        }
+        this.name = name;
+    }
+
+    /**
+     *
+     * @param coordinates
+     */
+
+    public void setCoordinates(Coordinates coordinates) {
+        if (coordinates == null){
+            throw new FieldException("Exception: Field 'coordinates' can not be null \n Please try again");
+        }
+        this.coordinates = coordinates;
+    }
+
+    public void setCreationDate() {
+        this.creationDate = LocalDate.now();
+        if (creationDate == null){
+            throw new FieldException("Exception: Field 'creationDate' can not be null \n Please try again");
+        }
+
+    }
+
+    /**
+     *
+     * @param price
+     */
+
+    public void setPrice(double price) {
+        if(price <= 0){
+            throw new FieldException("Exception: Field 'area' can not be less or equal zero \n Please try again");
+        }
+        this.price = price;
+    }
+
+    /**
+     *
+     * @param owner
+     */
+
+    public void setOwner(Person owner) {
+        if (owner == null){
+            throw new FieldException("Exception: Field 'owner' can not be null \n Please try again");
+        }
+        this.owner = owner;
+    }
+
+    /**
+     *
      * @return name
      */
     public String getName() {
         return name;
     }
 
-
+    /**
+     *
+     * @param o
+     * @return
+     */
 
     @Override
     public int compareTo(Product o) {
         return name.compareTo(o.getName());
     }
+
+    /**
+     *
+     * @return
+     */
 
     @Override
     public String toString() {
@@ -70,6 +137,5 @@ public class Product implements Comparable<Product> {
                 ", owner=" + owner +
                 '}';
     }
-
 
 }

@@ -2,6 +2,8 @@ package Model;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
+import java.util.UUID;
+
 public class Person {
     private String name; //Поле не может быть null, Строка не может быть пустой
     private String passportID; //Значение этого поля должно быть уникальным, Поле не может быть null
@@ -14,62 +16,76 @@ public class Person {
     @XStreamAlias("location")
     private Location location; //Поле может быть null
 
-    public Person(String name, String passportID, EyeColor eyeColor, HairColor hairColor, Country nationality, float LocationX, double LocationY, double LocationZ) {
-        this.name = name;
-        this.passportID = passportID;
-        this.eyeColor = eyeColor;
-        this.hairColor = hairColor;
-        this.nationality = nationality;
-        this.location = new Location(LocationX,LocationY,LocationZ);
+    public Person(String name, EyeColor eyeColor, HairColor hairColor, Country nationality, Location location) {
+        this.setName(name);
+        this.passportID = String.valueOf(this.uniqueId());
+        this.setEyeColor(eyeColor);
+        this.setHairColor(hairColor);
+        this.setNationality(nationality);
+        this.location = location;
     }
 
-    public String getName() {
-        return name;
-    }
+    /**
+     *
+     * @param name
+     */
 
     public void setName(String name) {
+        if (name == null){
+            throw new FieldException("Exception: Field 'name' can not be null \n Please try again");
+        }
+        if (name.isEmpty()){
+            throw new FieldException("Exception: Field 'name' can not be empty \n Please try again");
+        }
         this.name = name;
     }
 
-    public String getPassportID() {
-        return passportID;
+    /**
+     *
+     * @return passportID
+     */
+    private int uniqueId() {
+        UUID uniqueKey = UUID.randomUUID();
+        return Math.abs(uniqueKey.hashCode());
     }
 
-    public void setPassportID(String passportID) {
-        this.passportID = passportID;
-    }
-
-    public EyeColor getEyeColor() {
-        return eyeColor;
-    }
+    /**
+     *
+     * @param eyeColor
+     */
 
     public void setEyeColor(EyeColor eyeColor) {
+        if (eyeColor == null){
+            throw new FieldException("Exception: Field 'eyeColor' can not be null \n Please try again");
+        }
         this.eyeColor = eyeColor;
     }
 
-    public HairColor getHairColor() {
-        return hairColor;
-    }
+    /**
+     *
+     * @param hairColor
+     */
 
     public void setHairColor(HairColor hairColor) {
+        if (hairColor == null){
+            throw new FieldException("Exception: Field 'hairColor' can not be null \n Please try again");
+        }
         this.hairColor = hairColor;
     }
 
-    public Country getNationality() {
-        return nationality;
-    }
+    /**
+     *
+     * @param nationality
+     */
 
     public void setNationality(Country nationality) {
         this.nationality = nationality;
     }
 
-    public Location getLocation() {
-        return location;
-    }
-
-    public void setLocation(Location location) {
-        this.location = location;
-    }
+    /**
+     *
+     * @return
+     */
 
     @Override
     public String toString() {

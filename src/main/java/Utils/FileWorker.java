@@ -1,15 +1,15 @@
 package Utils;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
+import java.io.*;
 
 public class FileWorker {
-    public static String readFile(){
+
+    public static String readFile() {
         StringBuilder data = new StringBuilder();
         try (BufferedReader br = new BufferedReader(new FileReader(""))) {
             String line;
             while ((line = br.readLine()) != null) {
-               data.append(line);
+                data.append(line);
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -17,4 +17,12 @@ public class FileWorker {
         return String.valueOf(data);
     }
 
+    public void saveFile(String data, String fileName) throws IOException {
+        File file = new File("file.txt");
+        FileWriter writer = new FileWriter(file);
+        writer.write(data);
+        writer.flush();
+        writer.close();
+    }
 }
+

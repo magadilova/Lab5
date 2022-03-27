@@ -16,17 +16,10 @@ public class Location {
         this.z = z;
     }
 
-    public float getX() {
-        return x;
-    }
-
-    public double getY() {
-        return y;
-    }
-
-    public double getZ() {
-        return z;
-    }
+    /**
+     *
+     * @return
+     */
 
     @Override
     public String toString() {

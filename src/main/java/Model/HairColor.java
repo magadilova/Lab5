@@ -1,10 +1,21 @@
 package Model;
 
-import com.thoughtworks.xstream.annotations.XStreamAlias;
 
 public enum HairColor {
     BLACK,
     BLUE,
     YELLOW,
     BROWN;
+
+    static public void showHairColorList() {
+        for (HairColor color : values()){
+            System.out.println(color);
+        }
+    }
+
+    @Override
+    public String toString() {
+        return super.toString().toLowerCase();
+    }
+
 }
