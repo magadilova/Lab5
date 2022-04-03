@@ -14,16 +14,10 @@ public class Coordinates {
     }
 
     public void setX(Integer x) {
-        if(x == null){
-            throw new FieldException("Exception: Field 'x' can not be null");
-        }
         this.x = x;
     }
 
     public void setY(Long y) {
-        if(y == null){
-            throw new FieldException("Exception: Field 'y' can not be null");
-        }
         this.y = y;
     }
 

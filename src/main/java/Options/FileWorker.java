@@ -1,12 +1,16 @@
-package Utils;
+package Options;
 
 import java.io.*;
+
+/**
+ * Класс, отвечающий за работу с файлами формата XMl.
+ */
 
 public class FileWorker {
 
     public static String readFile() {
         StringBuilder data = new StringBuilder();
-        try (BufferedReader br = new BufferedReader(new FileReader(""))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("file.txt"))) {
             String line;
             while ((line = br.readLine()) != null) {
                 data.append(line);
@@ -17,8 +21,8 @@ public class FileWorker {
         return String.valueOf(data);
     }
 
-    public void saveFile(String data, String fileName) throws IOException {
-        File file = new File("file.txt");
+    public void saveFile(String data) throws IOException {
+        File file = new File("file1.txt");
         FileWriter writer = new FileWriter(file);
         writer.write(data);
         writer.flush();

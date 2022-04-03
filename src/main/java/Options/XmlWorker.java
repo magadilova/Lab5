@@ -1,8 +1,9 @@
-package Utils;
+package Options;
 
 import Model.*;
 import com.thoughtworks.xstream.XStream;
 import java.util.*;
+
 
 public class XmlWorker {
     Class<? extends LinkedHashSet>  collectionClass;
@@ -18,9 +19,8 @@ public class XmlWorker {
     }
 
     public String toXml(LinkedHashSet<Product> collection, Class<?>[] classes) {
-
         xstream.allowTypes(classes);
-
+        xstream.setMode(XStream.NO_REFERENCES);
         return xstream.toXML(collection);
     }
 

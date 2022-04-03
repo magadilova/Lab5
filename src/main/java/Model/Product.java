@@ -40,18 +40,16 @@ public class Product implements Comparable<Product> {
         return Math.abs(uniqueKey.hashCode());
     }
 
+    public void setId(long id) {
+        this.id = id;
+    }
+
     /**
      *
      * @param name
      */
 
     public void setName(String name) {
-        if (name == null){
-            throw new FieldException("Exception: Field 'name' can not be null \n Please try again");
-        }
-        if (name.isEmpty()){
-            throw new FieldException("Exception: Field 'name' can not be empty \n Please try again");
-        }
         this.name = name;
     }
 
@@ -61,9 +59,6 @@ public class Product implements Comparable<Product> {
      */
 
     public void setCoordinates(Coordinates coordinates) {
-        if (coordinates == null){
-            throw new FieldException("Exception: Field 'coordinates' can not be null \n Please try again");
-        }
         this.coordinates = coordinates;
     }
 
@@ -81,9 +76,6 @@ public class Product implements Comparable<Product> {
      */
 
     public void setPrice(double price) {
-        if(price <= 0){
-            throw new FieldException("Exception: Field 'area' can not be less or equal zero \n Please try again");
-        }
         this.price = price;
     }
 
@@ -93,9 +85,6 @@ public class Product implements Comparable<Product> {
      */
 
     public void setOwner(Person owner) {
-        if (owner == null){
-            throw new FieldException("Exception: Field 'owner' can not be null \n Please try again");
-        }
         this.owner = owner;
     }
 
@@ -109,6 +98,22 @@ public class Product implements Comparable<Product> {
 
     /**
      *
+     * @return partNumber
+     */
+    public String getPartNumber() {
+        return partNumber;
+    }
+
+    /**
+     *
+     * @return price
+     */
+    public double getPrice() {
+        return price;
+    }
+
+    /**
+     *
      * @param o
      * @return
      */
@@ -116,6 +121,19 @@ public class Product implements Comparable<Product> {
     @Override
     public int compareTo(Product o) {
         return name.compareTo(o.getName());
+    }
+
+//    @Override
+//    public int compareTo(Product o) {
+//        return partNumber.compareTo(o.getPartNumber());
+//    }
+
+    public long getManufactureCost() {
+        return manufactureCost;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     /**

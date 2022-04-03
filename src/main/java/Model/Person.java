@@ -31,12 +31,6 @@ public class Person {
      */
 
     public void setName(String name) {
-        if (name == null){
-            throw new FieldException("Exception: Field 'name' can not be null \n Please try again");
-        }
-        if (name.isEmpty()){
-            throw new FieldException("Exception: Field 'name' can not be empty \n Please try again");
-        }
         this.name = name;
     }
 
@@ -55,9 +49,6 @@ public class Person {
      */
 
     public void setEyeColor(EyeColor eyeColor) {
-        if (eyeColor == null){
-            throw new FieldException("Exception: Field 'eyeColor' can not be null \n Please try again");
-        }
         this.eyeColor = eyeColor;
     }
 
@@ -67,9 +58,6 @@ public class Person {
      */
 
     public void setHairColor(HairColor hairColor) {
-        if (hairColor == null){
-            throw new FieldException("Exception: Field 'hairColor' can not be null \n Please try again");
-        }
         this.hairColor = hairColor;
     }
 
@@ -81,6 +69,7 @@ public class Person {
     public void setNationality(Country nationality) {
         this.nationality = nationality;
     }
+
 
     /**
      *

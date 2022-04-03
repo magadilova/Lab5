@@ -1,14 +1,17 @@
 package View.Commands;
 
+/**
+ * Абстрактный класс комманд
+ */
 public abstract class AbstractCommand {
     private String name;
     private String description;
     private String params;
 
-    public AbstractCommand(String name, String description, String params) {
+    public AbstractCommand(String name, String params, String description) {
         this.name = name;
-        this.description = description;
         this.params = params;
+        this.description = description;
     }
 
     public String getName() {

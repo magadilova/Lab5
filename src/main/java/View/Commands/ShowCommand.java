@@ -1,17 +1,34 @@
 package View.Commands;
 
-import com.thoughtworks.xstream.XStream;
+import Model.Product;
 
-import java.util.Collection;
+import java.util.LinkedHashSet;
 
-public class ShowCommand {
-    /**
-     * показать все элементы коллекции в строковом представлении
-     */
-//    public <T> void show(Collection<T> collection){
-//        XStream xstream = new XStream();
-//        String xml = xstream.toXML(collection);
-//        Collection<T> product = (Collection<T>) xstream.fromXML(xml);
-//        System.out.println(product.toString());
-//    }
+/**
+ * Выводит в стандартный поток вывода все элементы коллекции в строковом представлении.
+ */
+
+public class ShowCommand extends AbstractCommand {
+    LinkedHashSet<Product> collection;
+
+    public ShowCommand(LinkedHashSet<Product> collection) {
+        super("show", "", "output to the standard output stream all the elements" +
+                " of the collection in a string representation");
+        this.collection = collection;
+    }
+
+    @Override
+    public boolean execute(String arguments) {
+        try {
+            if (arguments.isEmpty()) {
+                if (collection.size() != 0) {
+                    System.out.println(collection);
+                } else System.out.println("Oops, сollection is empty");
+                return true;
+            } else throw new CommandException("Exception: This command must not have any characters");
+        } catch (CommandException e) {
+            System.out.println(e.getMessage());
+        }
+        return false;
+    }
 }
