@@ -394,5 +394,4 @@ public class Asker {
         Person owner = owner();
         return new Product(name,coordinates,price,partNumber,manufactureCost,unitOfMeasure,owner);
     }
-
 }

@@ -1,6 +1,8 @@
 package Controller;
 
 import Model.*;
+import View.Commands.CommandException;
+import View.Commands.WrongFieldComandException;
 
 
 import java.time.LocalDateTime;
@@ -19,6 +21,21 @@ public class LinkedHashSetCollectionManager {
                 throw new SecurityException("Fail !!!  Product id must be unique");
             }
 
+            set.add(product);
+            sortSet();
+
+        } catch (SecurityException e) {
+            System.out.println(e.getMessage());
+        }
+
+    }
+
+    public void addUpdate(Product product, long id){
+        try {
+            if (checkUniqueId(product)) {
+                throw new SecurityException("Fail !!!  Product id must be unique");
+            }
+            product.setId(id);
             set.add(product);
             sortSet();
 
@@ -82,9 +99,11 @@ public class LinkedHashSetCollectionManager {
         sortSet();
     }
 
-    public void deleteByPN(String partNumber){
+    public void deleteByPN(String partNumber) {
+
         set.removeIf(item -> item.getPartNumber().equals(partNumber));
         sortSet();
+
     }
 
 

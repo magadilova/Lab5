@@ -31,8 +31,8 @@ public class UpdateCommand extends  AbstractCommand {
                     }
                     for (Product product : arrayList) {
                         linkedHashSetCollectionManager.deleteObject(product);
-                        linkedHashSetCollectionManager.add(asker.startAsker());
                         long id = Long.parseLong(arguments);
+                        linkedHashSetCollectionManager.addUpdate(asker.startAsker(),id);
                         product.setId(id);
                     }
                 }catch (NullPointerException|NumberFormatException e){

@@ -22,12 +22,15 @@ public class FilterPNCommand extends AbstractCommand {
     public boolean execute(String arguments) {
         try {
             if (!arguments.equals("")) {
+                int count = 0;
                 for (Product item : set) {
                     if (item.getPartNumber().substring(0, arguments.length()).equals(arguments)) {
                         System.out.println(item);
+                        count++;
                     }
                 }
-                System.out.println("Inferred elements, the value of the partNumber field starts with the given substring");
+                System.out.println("Inferred elements, the value of the partNumber field starts with the given substring." +
+                        "\nThe number of elements that satisfy the condition: " + count);
                 return true;
             } else throw new CommandException("Exception: This command needs the value \" Part number \"");
         } catch (CommandException e) {

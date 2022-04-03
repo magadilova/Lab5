@@ -19,7 +19,7 @@ public class ExecuteCommand extends AbstractCommand {
     public boolean execute(String arguments) {
         try {
             if (!arguments.equals("")) {
-
+                
                 return true;
             } else throw new CommandException("Exception: This command needs the value \"file_name\"");
         } catch (CommandException e) {

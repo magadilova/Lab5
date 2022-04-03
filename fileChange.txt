@@ -174,29 +174,4 @@
       </location>
     </person>
   </product>
-  <product>
-    <id>1717345614</id>
-    <name>X</name>
-    <coordinates>
-      <coordinatesX>12</coordinatesX>
-      <coordinatesY>3</coordinatesY>
-    </coordinates>
-    <creationDate>2022-04-03</creationDate>
-    <price>3.0</price>
-    <partNumber>23</partNumber>
-    <manufactureCost>3</manufactureCost>
-    <unitOfMeasure>MILLIGRAMS</unitOfMeasure>
-    <person>
-      <name>NN</name>
-      <passportID>1514215996</passportID>
-      <eyeColor>BLUE</eyeColor>
-      <hairColor>BLUE</hairColor>
-      <country>INDIA</country>
-      <location>
-        <locationX>33.0</locationX>
-        <locationY>3.0</locationY>
-        <locationZ>3.0</locationZ>
-      </location>
-    </person>
-  </product>
 </Collection>

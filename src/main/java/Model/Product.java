@@ -20,7 +20,7 @@ public class Product implements Comparable<Product> {
     private Person owner; //Поле не может быть null
 
     public Product(String name, Coordinates coordinates, double price, String partNumber, long manufactureCost, UnitOfMeasure unitOfMeasure, Person owner) {
-        this.id = this.uniqueId();
+        this.setId(uniqueId());
         this.setName(name);
         this.setCoordinates(coordinates);
         this.setCreationDate();
@@ -30,6 +30,20 @@ public class Product implements Comparable<Product> {
         this.unitOfMeasure = unitOfMeasure;
         this.setOwner(owner);
     }
+
+    public Product(long id, String name, Coordinates coordinates, LocalDate creationDate, double price, String partNumber, long manufactureCost, UnitOfMeasure unitOfMeasure, Person owner) {
+        this.id = id;
+        this.name = name;
+        this.coordinates = coordinates;
+        this.creationDate = creationDate;
+        this.price = price;
+        this.partNumber = partNumber;
+        this.manufactureCost = manufactureCost;
+        this.unitOfMeasure = unitOfMeasure;
+        this.owner = owner;
+    }
+
+
 
     /**
      *

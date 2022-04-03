@@ -35,37 +35,8 @@ public class Main {
         LinkedHashSetCollectionManager linkedHashSetCollectionManager = new LinkedHashSetCollectionManager();
         CommandManager commandManager = new CommandManager();
         Asker asker = new Asker(new Scanner(System.in));
-        Scanner scanner = new Scanner(System.in);
         XmlWorker xmlWorker = new XmlWorker(linkedHashSetCollectionManager.getSet().getClass(),Product.class);
         FileWorker fileWorker = new FileWorker();
-
-
-        commandManager.putCommands(new AbstractCommand[]{
-                new UpdateCommand(linkedHashSetCollectionManager,asker),
-                new ShowCommand(linkedHashSetCollectionManager.getSet()),
-                new RemovePNCommand(linkedHashSetCollectionManager),
-                new RemoveLCommand(linkedHashSetCollectionManager,asker),
-                new RemoveIDCommand(linkedHashSetCollectionManager),
-                new RemoveGCommand(linkedHashSetCollectionManager,asker),
-                new InfoCommand(linkedHashSetCollectionManager),
-                new HelpCommand(commandManager),
-                new FilterPNCommand(linkedHashSetCollectionManager.getSet()),
-                new FilterLCommand(linkedHashSetCollectionManager.getSet(),scanner),
-                new ExitCommand(),
-                new ExecuteCommand(fileWorker, xmlWorker),
-                new ClearCommand(linkedHashSetCollectionManager),
-                new AddCommand(asker, linkedHashSetCollectionManager),
-                new SaveCommand(fileWorker,xmlWorker, linkedHashSetCollectionManager),
-                new HistoryCommand(commandManager)});
-
-//        linkedHashSetCollectionManager.getSet().add(p1);
-//        linkedHashSetCollectionManager.getSet().add(p2);
-//        linkedHashSetCollectionManager.getSet().add(p3);
-//        linkedHashSetCollectionManager.getSet().add(p4);
-//        linkedHashSetCollectionManager.getSet().add(p5);
-//        linkedHashSetCollectionManager.getSet().add(p6);
-//        linkedHashSetCollectionManager.getSet().add(p7);
-
 
         LinkedHashSet<Product> xmlFrom = xmlWorker.fromXML(FileWorker.readFile(),new Class[]{
                 Person.class,
@@ -82,8 +53,39 @@ public class Main {
 
         linkedHashSetCollectionManager.load(xmlFrom);
 
-        commandManager.executeCommand("show");
-        commandManager.executeCommand("add");
+        commandManager.putCommands(new AbstractCommand[]{
+                new UpdateCommand(linkedHashSetCollectionManager,asker),
+                new ShowCommand(linkedHashSetCollectionManager.getSet()),
+                new RemovePNCommand(linkedHashSetCollectionManager),
+                new RemoveLCommand(linkedHashSetCollectionManager,asker),
+                new RemoveIDCommand(linkedHashSetCollectionManager),
+                new RemoveGCommand(linkedHashSetCollectionManager,asker),
+                new InfoCommand(linkedHashSetCollectionManager),
+                new HelpCommand(commandManager),
+                new FilterPNCommand(linkedHashSetCollectionManager.getSet()),
+                new FilterLCommand(linkedHashSetCollectionManager.getSet()),
+                new ExitCommand(),
+                new ExecuteCommand(fileWorker, xmlWorker),
+                new ClearCommand(linkedHashSetCollectionManager),
+                new AddCommand(asker, linkedHashSetCollectionManager),
+                new SaveCommand(fileWorker,xmlWorker, linkedHashSetCollectionManager),
+                new HistoryCommand(commandManager)});
+
+//        linkedHashSetCollectionManager.getSet().add(p1);
+//        linkedHashSetCollectionManager.getSet().add(p2);
+//        linkedHashSetCollectionManager.getSet().add(p3);
+//        linkedHashSetCollectionManager.getSet().add(p4);
+//        linkedHashSetCollectionManager.getSet().add(p5);
+//        linkedHashSetCollectionManager.getSet().add(p6);
+//        linkedHashSetCollectionManager.getSet().add(p7);
+
+
+
+//        commandManager.executeCommand("show");
+//        commandManager.executeCommand("update_id 441488344");
+//        commandManager.executeCommand("remove_any_by_part_number 7345617");
+//        commandManager.executeCommand("remove_by_id 441488344");
+//        commandManager.executeCommand("update_id 441488344");
         commandManager.executeCommand("save");
 
 
