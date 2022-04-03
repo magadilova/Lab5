@@ -85,7 +85,7 @@ public class Main {
 //        commandManager.executeCommand("update_id 441488344");
 //        commandManager.executeCommand("remove_any_by_part_number 7345617");
 //        commandManager.executeCommand("remove_by_id 441488344");
-//        commandManager.executeCommand("update_id 441488344");
+//        commandManager.executeCommand("filter_starts_with_part_number 73456");
         commandManager.executeCommand("save");
 
 

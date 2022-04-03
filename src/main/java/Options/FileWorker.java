@@ -10,7 +10,7 @@ public class FileWorker {
 
     public static String readFile() {
         StringBuilder data = new StringBuilder();
-        try (BufferedReader br = new BufferedReader(new FileReader("fileScr.txt"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("fileScr.xml"))) {
             String line;
             while ((line = br.readLine()) != null) {
                 data.append(line);
@@ -22,7 +22,7 @@ public class FileWorker {
     }
 
     public void saveFile(String data) throws IOException {
-        File file = new File("fileChange.txt");
+        File file = new File("fileChange.xml");
         FileWriter writer = new FileWriter(file);
         writer.write(data);
         writer.flush();
