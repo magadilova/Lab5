@@ -1,10 +1,17 @@
 package Model;
 
 public enum EyeColor {
-    GREEN,
-    BLUE,
-    WHITE,
-    BROWN;
+    GREEN("green"),
+    BLUE("blue"),
+    WHITE("white"),
+    BROWN("brown");
+
+    private final String eyeColor;
+
+    EyeColor(String eyeColor) {
+        this.eyeColor = eyeColor;
+    }
+
 
     static public void showEyeColorsList() {
         for (EyeColor color : values()) {

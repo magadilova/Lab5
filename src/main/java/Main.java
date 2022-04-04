@@ -87,7 +87,7 @@ public class Main {
 //        commandManager.executeCommand("remove_by_id 441488344");
 //        commandManager.executeCommand("save");
 //        commandManager.executeCommand("filter_starts_with_part_number 73456");
-        commandManager.executeCommand("execute_script script.txt");
+        commandManager.executeCommand("execute_script scriptAdd.txt");
 //        commandManager.executeCommand("add");
 
 

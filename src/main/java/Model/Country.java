@@ -1,9 +1,15 @@
 package Model;
 
 public enum Country {
-    FRANCE,
-    INDIA,
-    ITALY;
+    FRANCE("france"),
+    INDIA("india"),
+    ITALY("italy");
+
+    private final String country;
+
+    Country(String country) {
+        this.country = country;
+    }
 
     public static void showCountryList(){
         for ( Country country : values()){

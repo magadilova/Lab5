@@ -2,10 +2,17 @@ package Model;
 
 
 public enum HairColor {
-    BLACK,
-    BLUE,
-    YELLOW,
-    BROWN;
+    BLACK("black"),
+    BLUE("blue"),
+    YELLOW("yellow"),
+    BROWN("brown");
+
+    private final String hairColor;
+
+    HairColor(String hairColor) {
+        this.hairColor = hairColor;
+    }
+
 
     static public void showHairColorList() {
         for (HairColor color : values()){

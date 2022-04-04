@@ -4,9 +4,17 @@ package Model;
 
 public enum UnitOfMeasure {
 
-    CENTIMETERS,
-    MILLILITERS,
-    MILLIGRAMS;
+    CENTIMETERS("centimeters"),
+    MILLILITERS("milliliters"),
+    MILLIGRAMS("milligrams");
+
+
+
+    private final String unitOfMeasure;
+
+    UnitOfMeasure(String unitOfMeasure) {
+        this.unitOfMeasure = unitOfMeasure;
+    }
 
 
     public static void showUnitOfMeasureList(){

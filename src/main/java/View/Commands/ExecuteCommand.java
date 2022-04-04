@@ -1,8 +1,7 @@
 package View.Commands;
 
 import Controller.LinkedHashSetCollectionManager;
-import Model.Coordinates;
-import Model.Product;
+import Model.*;
 import Options.FileWorker;
 import View.CommandManager;
 
@@ -28,13 +27,18 @@ public class ExecuteCommand extends AbstractCommand {
         try {
             if (!arguments.equals("")) {
                 for (String element : FileWorker.readScript(arguments)){
-                    if (!element.equals("execute_script")){
-                        System.out.print(i + ") ");
-                        commandManager.executeCommand(element);
-                        i++;
+                    if (element.equals("add")){
+                        linkedHashSetCollectionManager.add(new Product("BVH",
+                                new Coordinates(Integer.parseInt("3"),Long.parseLong("4")),
+                                Double.parseDouble("37"),"37",Long.parseLong("783"),
+                                UnitOfMeasure.valueOf("MILLIGRAMS"),
+                                new Person("657", EyeColor.valueOf("BLUE"), HairColor.valueOf("BLUE"),
+                                        Country.valueOf("ITALY"), new Location(Float.parseFloat("67"),Double.parseDouble("7"),Double.parseDouble("7")))));
                     }
+                    if (element.equals("execute_script")) throw new CommandException("You have already run the script");
 
-                    else throw new CommandException("You have already run the script");
+                    else commandManager.executeCommand(element);
+
                 }
                 return true;
             } else throw new CommandException("Exception: This command needs the value \"file_name\"");
