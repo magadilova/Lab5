@@ -1,6 +1,8 @@
 package Options;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  * Класс, отвечающий за работу с файлами формата XMl.
@@ -21,7 +23,22 @@ public class FileWorker {
         return String.valueOf(data);
     }
 
-    public void saveFile(String data) throws IOException {
+    public static ArrayList<String> readScript() {
+        ArrayList<String> list = new ArrayList<>();
+
+        try (Scanner scan = new Scanner(new File("script.txt"))) {
+            while (scan.hasNextLine()) {
+                list.add(scan.nextLine());
+            }
+            return list;
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
+        public void saveFile(String data) throws IOException {
         File file = new File("fileChange.xml");
         FileWriter writer = new FileWriter(file);
         writer.write(data);

@@ -1,25 +1,28 @@
 package View.Commands;
 
-import Controller.LinkedHashSetCollectionManager;
 import Options.FileWorker;
-import Options.XmlWorker;
+import View.CommandManager;
 
 public class ExecuteCommand extends AbstractCommand {
     FileWorker fileWorker;
-    XmlWorker xmlWorker;
+    CommandManager commandManager;
 
-    public ExecuteCommand(FileWorker fileWorker, XmlWorker xmlWorker) {
+    public ExecuteCommand(FileWorker fileWorker, CommandManager commandManager) {
         super("execute_script", "file_name", "read and execute a script from a specified file. " +
                 "The script contains commands in the same form as they are entered by the user in interactive mode.");
         this.fileWorker = fileWorker;
-        this.xmlWorker = xmlWorker;
+        this.commandManager = commandManager;
     }
 
     @Override
     public boolean execute(String arguments) {
         try {
-            if (!arguments.equals("")) {
-                
+            if (arguments.equals("")) {
+                for (String element : FileWorker.readScript()){
+                    if (!element.equals("execute_script"))
+                    commandManager.executeCommand(element);
+                    else throw new CommandException("You have already run the script");
+                }
                 return true;
             } else throw new CommandException("Exception: This command needs the value \"file_name\"");
         } catch (CommandException e) {

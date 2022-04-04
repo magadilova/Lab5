@@ -1,9 +1,12 @@
 package View;
 
+
 import View.Commands.AbstractCommand;
+
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
+
 
 public class CommandManager {
     LinkedHashMap<String, AbstractCommand> commands = new LinkedHashMap<>();
@@ -39,7 +42,4 @@ public class CommandManager {
         return commands.get(strCommand[0]).execute(strCommand.length > 1 ? strCommand[1] : "");
     }
 
-    public void executeScript(){
-
-    }
 }

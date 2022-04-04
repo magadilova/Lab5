@@ -65,7 +65,7 @@ public class Main {
                 new FilterPNCommand(linkedHashSetCollectionManager.getSet()),
                 new FilterLCommand(linkedHashSetCollectionManager.getSet()),
                 new ExitCommand(),
-                new ExecuteCommand(fileWorker, xmlWorker),
+                new ExecuteCommand(fileWorker, commandManager),
                 new ClearCommand(linkedHashSetCollectionManager),
                 new AddCommand(asker, linkedHashSetCollectionManager),
                 new SaveCommand(fileWorker,xmlWorker, linkedHashSetCollectionManager),
@@ -86,18 +86,7 @@ public class Main {
 //        commandManager.executeCommand("remove_any_by_part_number 7345617");
 //        commandManager.executeCommand("remove_by_id 441488344");
 //        commandManager.executeCommand("filter_starts_with_part_number 73456");
-        commandManager.executeCommand("save");
-
-
-
-
-
-
-
-
-
-
-
+        commandManager.executeCommand("execute_script");
 
 //
 //        while (true) {
@@ -107,6 +96,7 @@ public class Main {
 //                commandManager.executeCommand(console.readLine("Please enter command \n"));
 //            }
 //        }
+
 
     }
 }
