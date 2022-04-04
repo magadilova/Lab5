@@ -23,10 +23,10 @@ public class FileWorker {
         return String.valueOf(data);
     }
 
-    public static ArrayList<String> readScript() {
+    public static ArrayList<String> readScript(String filename) {
         ArrayList<String> list = new ArrayList<>();
 
-        try (Scanner scan = new Scanner(new File("script.txt"))) {
+        try (Scanner scan = new Scanner(new File(filename))) {
             while (scan.hasNextLine()) {
                 list.add(scan.nextLine());
             }

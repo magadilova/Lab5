@@ -8,7 +8,7 @@ import View.Commands.*;
 import View.CommandManager;
 
 
-import java.io.Console;
+
 import java.util.LinkedHashSet;
 import java.util.Scanner;
 
@@ -65,7 +65,7 @@ public class Main {
                 new FilterPNCommand(linkedHashSetCollectionManager.getSet()),
                 new FilterLCommand(linkedHashSetCollectionManager.getSet()),
                 new ExitCommand(),
-                new ExecuteCommand(fileWorker, commandManager),
+                new ExecuteCommand(fileWorker, commandManager, linkedHashSetCollectionManager),
                 new ClearCommand(linkedHashSetCollectionManager),
                 new AddCommand(asker, linkedHashSetCollectionManager),
                 new SaveCommand(fileWorker,xmlWorker, linkedHashSetCollectionManager),
@@ -85,8 +85,11 @@ public class Main {
 //        commandManager.executeCommand("update_id 441488344");
 //        commandManager.executeCommand("remove_any_by_part_number 7345617");
 //        commandManager.executeCommand("remove_by_id 441488344");
+//        commandManager.executeCommand("save");
 //        commandManager.executeCommand("filter_starts_with_part_number 73456");
-        commandManager.executeCommand("execute_script");
+        commandManager.executeCommand("execute_script script.txt");
+//        commandManager.executeCommand("add");
+
 
 //
 //        while (true) {

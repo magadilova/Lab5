@@ -37,7 +37,7 @@ public class CommandManager {
     }
 
     public boolean executeCommand(String str){
-        String[] strCommand = str.split(" ",2);
+        String[] strCommand = str.trim().split(" ",2);
         addToHistory(str);
         return commands.get(strCommand[0]).execute(strCommand.length > 1 ? strCommand[1] : "");
     }
