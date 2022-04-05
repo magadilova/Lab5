@@ -4,6 +4,7 @@ package View;
 import View.Commands.AbstractCommand;
 
 
+
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
@@ -13,9 +14,9 @@ public class CommandManager {
     ArrayList<String> history = new ArrayList();
 
 
-    public void putCommands(AbstractCommand[] commands){
-        for (AbstractCommand command : commands){
-            this.commands.put(command.getName(),command);
+    public void putCommands(AbstractCommand[] commands) {
+        for (AbstractCommand command : commands) {
+            this.commands.put(command.getName(), command);
         }
     }
 
@@ -23,11 +24,13 @@ public class CommandManager {
         return commands;
     }
 
-    public void addToHistory(String command){
-        if( history.size() == 12 ){
+    public void addToHistory(String command) {
+        if (history.size() == 12) {
             history.remove(0);
             history.add(command);
-        } else { history.add(command);}
+        } else {
+            history.add(command);
+        }
 
     }
 
@@ -37,9 +40,12 @@ public class CommandManager {
     }
 
     public boolean executeCommand(String str){
-        String[] strCommand = str.trim().split(" ",2);
+
+        String[] strCommand = str.trim().split(" ", 2);
         addToHistory(str);
         return commands.get(strCommand[0]).execute(strCommand.length > 1 ? strCommand[1] : "");
+
+
     }
 
 }

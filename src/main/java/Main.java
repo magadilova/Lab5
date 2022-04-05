@@ -7,8 +7,6 @@ import View.Asker;
 import View.Commands.*;
 import View.CommandManager;
 
-
-
 import java.util.LinkedHashSet;
 import java.util.Scanner;
 
@@ -38,6 +36,8 @@ public class Main {
         XmlWorker xmlWorker = new XmlWorker(linkedHashSetCollectionManager.getSet().getClass(),Product.class);
         FileWorker fileWorker = new FileWorker();
 
+
+
         LinkedHashSet<Product> xmlFrom = xmlWorker.fromXML(FileWorker.readFile(),new Class[]{
                 Person.class,
                 Product.class,
@@ -65,7 +65,7 @@ public class Main {
                 new FilterPNCommand(linkedHashSetCollectionManager.getSet()),
                 new FilterLCommand(linkedHashSetCollectionManager.getSet()),
                 new ExitCommand(),
-                new ExecuteCommand(fileWorker, commandManager, linkedHashSetCollectionManager),
+                new ExecuteCommand(fileWorker, commandManager, linkedHashSetCollectionManager,xmlWorker),
                 new ClearCommand(linkedHashSetCollectionManager),
                 new AddCommand(asker, linkedHashSetCollectionManager),
                 new SaveCommand(fileWorker,xmlWorker, linkedHashSetCollectionManager),
@@ -81,13 +81,15 @@ public class Main {
 
 
 
-//        commandManager.executeCommand("show");
-//        commandManager.executeCommand("update_id 441488344");
-//        commandManager.executeCommand("remove_any_by_part_number 7345617");
+//        commandManager.executeCommand("update_id 441488344" );
+        commandManager.executeCommand("show");
+//        commandManager.executeCommand("clear");
+//        commandManager.executeCommand("remove_any_by_part_number 2987");
 //        commandManager.executeCommand("remove_by_id 441488344");
 //        commandManager.executeCommand("save");
+//        commandManager.executeCommand("exit");
 //        commandManager.executeCommand("filter_starts_with_part_number 73456");
-        commandManager.executeCommand("execute_script scriptAdd.txt");
+//        commandManager.executeCommand("execute_script scriptAdd.txt");
 //        commandManager.executeCommand("add");
 
 

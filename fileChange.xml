@@ -1,30 +1,5 @@
 <Collection>
   <product>
-    <id>441488344</id>
-    <name>Bowl</name>
-    <coordinates>
-      <coordinatesX>23</coordinatesX>
-      <coordinatesY>201</coordinatesY>
-    </coordinates>
-    <creationDate>2022-04-03</creationDate>
-    <price>329.0</price>
-    <partNumber>7345617</partNumber>
-    <manufactureCost>21</manufactureCost>
-    <unitOfMeasure>MILLIGRAMS</unitOfMeasure>
-    <person>
-      <name>Hufflepuff</name>
-      <passportID>923555737</passportID>
-      <eyeColor>BROWN</eyeColor>
-      <hairColor>YELLOW</hairColor>
-      <country>ITALY</country>
-      <location>
-        <locationX>10.0</locationX>
-        <locationY>1.2</locationY>
-        <locationZ>23.0</locationZ>
-      </location>
-    </person>
-  </product>
-  <product>
     <id>1439700657</id>
     <name>Diadem</name>
     <coordinates>

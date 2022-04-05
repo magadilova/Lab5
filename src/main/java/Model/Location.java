@@ -23,10 +23,10 @@ public class Location {
 
     @Override
     public String toString() {
-        return "Location{" +
+        return "Location {" +
                 "x=" + x +
                 ", y=" + y +
                 ", z=" + z +
-                '}';
+                "}\n";
     }
 }

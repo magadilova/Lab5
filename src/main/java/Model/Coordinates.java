@@ -28,7 +28,7 @@ public class Coordinates {
 
     @Override
     public String toString() {
-        return "Coordinates{" +
+        return " Coordinates {" +
                 "x=" + x +
                 ", y=" + y +
                 '}';

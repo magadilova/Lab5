@@ -78,13 +78,13 @@ public class Person {
 
     @Override
     public String toString() {
-        return "Person{" +
-                "name='" + name + '\'' +
-                ", passportID='" + passportID + '\'' +
-                ", eyeColor=" + eyeColor +
-                ", hairColor=" + hairColor +
-                ", nationality=" + nationality +
-                ", location=" + location.toString() +
-                '}';
+        return "Person {" +
+                "\n\tname = '" + name + '\'' +
+                ",\n\t passportID = '" + passportID + '\'' +
+                ",\n\t eyeColor = " + eyeColor +
+                ",\n\t hairColor = " + hairColor +
+                ",\n\t nationality = " + nationality +
+                ",\n\t location = " + location.toString() +
+                "\t}\n";
     }
 }

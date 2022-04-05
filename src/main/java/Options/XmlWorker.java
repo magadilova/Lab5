@@ -25,8 +25,15 @@ public class XmlWorker {
     }
 
     public LinkedHashSet<Product> fromXML(String xmlString, Class<?>[] classes){
-        xstream.allowTypes(classes);
-        return (LinkedHashSet<Product>) xstream.fromXML(xmlString);
+        try {
+            if (xmlString.isEmpty()) throw new FileException("This file is empty !");
+            if (!xmlString.isEmpty()){ xstream.allowTypes(classes); return (LinkedHashSet<Product>) xstream.fromXML(xmlString);}
+            else throw new SecurityException("Permission denied");
+        } catch (FileException | SecurityException e){
+            System.out.println(e.getMessage());
+        }
+        System.exit(0);
+        return null;
     }
 }
 

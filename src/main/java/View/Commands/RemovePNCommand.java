@@ -21,11 +21,11 @@ public class RemovePNCommand extends AbstractCommand {
     public boolean execute(String arguments) {
         try {
             if (!arguments.equals("")) {
-                linkedHashSetCollectionManager.deleteByPN(arguments);
+                linkedHashSetCollectionManager.deleteByPN(arguments.trim());
                 System.out.println("One element removed, partNumber field value that is equivalent to the given");
                 return true;
             } else throw new CommandException("Exception: This command requires the value of the \" Part Number\" field");
-        } catch (CommandException e){
+        } catch (CommandException | WrongFieldComandException e){
             System.out.println(e.getMessage());
         } return false;
     }

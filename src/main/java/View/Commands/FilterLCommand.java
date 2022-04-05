@@ -25,7 +25,7 @@ public class FilterLCommand extends AbstractCommand {
         try {
             if(!arguments.isEmpty()) {
                 int count = 0;
-                double price = Double.parseDouble(arguments);
+                double price = Double.parseDouble(arguments.trim());
                 for (Product item : set) {
                     if (price > item.getPrice()){
                         System.out.println(item);

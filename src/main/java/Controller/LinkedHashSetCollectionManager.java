@@ -1,7 +1,6 @@
 package Controller;
 
 import Model.*;
-import View.Commands.CommandException;
 import View.Commands.WrongFieldComandException;
 
 
@@ -14,6 +13,7 @@ import java.util.*;
 public class LinkedHashSetCollectionManager {
     private final LinkedHashSet<Product> set = new LinkedHashSet<>();
     private final LocalDateTime dateInitialization = LocalDateTime.now();
+
 
     public void add(Product product){
         try {
@@ -95,14 +95,14 @@ public class LinkedHashSetCollectionManager {
     }
 
     public void deleteByID(Long id) {
-        set.removeIf(element -> element.getId().equals(id));
-        sortSet();
+        if (!set.removeIf(element -> element.getId().equals(id)))
+            throw new WrongFieldComandException("There is no element with the given field \"id\" value");
+
     }
 
     public void deleteByPN(String partNumber) {
-
-        set.removeIf(item -> item.getPartNumber().equals(partNumber));
-        sortSet();
+        if (!set.removeIf(item -> item.getPartNumber().equals(partNumber)))
+            throw new WrongFieldComandException("There is no element with the given field \" part number \" value");
 
     }
 
@@ -125,6 +125,5 @@ public class LinkedHashSetCollectionManager {
         set.clear();
         set.addAll(treeSet);
     }
-
 
 }

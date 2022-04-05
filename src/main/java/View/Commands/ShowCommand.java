@@ -22,7 +22,9 @@ public class ShowCommand extends AbstractCommand {
         try {
             if (arguments.isEmpty()) {
                 if (collection.size() != 0) {
-                    System.out.println(collection);
+                    for (Product product : collection){
+                        System.out.println(product.toString());
+                    }
                 } else System.out.println("Oops, сollection is empty");
                 return true;
             } else throw new CommandException("Exception: This command must not have any characters");

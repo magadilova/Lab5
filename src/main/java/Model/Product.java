@@ -159,17 +159,17 @@ public class Product implements Comparable<Product> {
 
     @Override
     public String toString() {
-        return "Product{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", coordinates=" + coordinates.toString() +
-                ", creationDate=" + creationDate.toString() +
-                ", price=" + price +
-                ", partNumber='" + partNumber + '\'' +
-                ", manufactureCost=" + manufactureCost +
-                ", unitOfMeasure=" + unitOfMeasure +
-                ", owner=" + owner +
-                '}';
+        return "Product {\n " +
+                "id = " + id +
+                ",\n name = '" + name + '\'' +
+                ",\n coordinates =" + coordinates.toString() +
+                ",\n creationDate = " + creationDate.toString() +
+                ",\n price = " + price +
+                ",\n partNumber = '" + partNumber + '\'' +
+                ",\n manufactureCost = " + manufactureCost +
+                ",\n unitOfMeasure = " + unitOfMeasure +
+                ",\n owner =  " + owner.toString() +
+                "}";
     }
 
 }

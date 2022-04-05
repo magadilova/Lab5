@@ -18,11 +18,11 @@ public class RemoveIDCommand extends AbstractCommand {
     public boolean execute(String arguments) {
         try {
             if (!arguments.equals("")) {
-                linkedHashSetCollectionManager.deleteByID(Long.parseLong(arguments));
+                linkedHashSetCollectionManager.deleteByID(Long.parseLong(arguments.trim()));
                 System.out.println("Element was successfully deleted");
                 return true;
             } else throw new CommandException("Exception: This command needs the value \" id \"");
-        } catch (CommandException e) {
+        } catch (WrongFieldComandException | CommandException e){
             System.out.println(e.getMessage());
         }
         return false;

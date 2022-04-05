@@ -24,7 +24,7 @@ public class FilterPNCommand extends AbstractCommand {
             if (!arguments.equals("")) {
                 int count = 0;
                 for (Product item : set) {
-                    if (item.getPartNumber().startsWith(arguments)) {
+                    if (item.getPartNumber().startsWith(arguments.trim())) {
                         System.out.println(item);
                         count++;
                     }

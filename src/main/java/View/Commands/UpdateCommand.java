@@ -22,25 +22,27 @@ public class UpdateCommand extends  AbstractCommand {
     public boolean execute(String arguments) {
         try {
             if (!arguments.isEmpty()) {
-                try {
-                    ArrayList<Product> arrayList = new ArrayList<>();
-                    for (Product product : linkedHashSetCollectionManager.getSet()) {
-                        if (product.getId().equals(Long.parseLong(arguments))) {
-                            arrayList.add(product);
-                        }
+
+                ArrayList<Product> arrayList = new ArrayList<>();
+                for (Product product : linkedHashSetCollectionManager.getSet()) {
+                    if (product.getId().equals(Long.parseLong(arguments.trim()))) {
+                        arrayList.add(product);
                     }
-                    for (Product product : arrayList) {
-                        linkedHashSetCollectionManager.deleteObject(product);
+                }
+
+                for (Product product : arrayList) {
+                    linkedHashSetCollectionManager.deleteObject(product);
+                    if (!product.getId().equals(Long.parseLong(arguments.trim())))
+                        throw new WrongFieldComandException("There is no element with the given field \"id\" value");
+                    else {
                         long id = Long.parseLong(arguments);
-                        linkedHashSetCollectionManager.addUpdate(asker.startAsker(),id);
+                        linkedHashSetCollectionManager.addUpdate(asker.startAsker(), id);
                         product.setId(id);
                     }
-                }catch (NullPointerException|NumberFormatException e){
-                    System.out.println("No argument");
                 }
-                return true;
+
             } else throw new CommandException("Exception: This command must not have any characters");
-        } catch (CommandException e) {
+        } catch (CommandException | WrongFieldComandException e) {
             System.out.println(e.getMessage());
         }
         return false;
