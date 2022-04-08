@@ -2,6 +2,8 @@ package options;
 
 import model.*;
 import com.thoughtworks.xstream.XStream;
+import options.fileException.FileException;
+
 import java.util.*;
 
 

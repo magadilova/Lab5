@@ -1,17 +1,17 @@
 package view;
 
-
 import view.commands.AbstractCommand;
 
-
-
+import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Deque;
 import java.util.LinkedHashMap;
 
 
 public class CommandManager {
     LinkedHashMap<String, AbstractCommand> commands = new LinkedHashMap<>();
     ArrayList<String> history = new ArrayList();
+    private Deque<String> files = new ArrayDeque<>();
 
 
     public void putCommands(AbstractCommand... commands) {
@@ -35,7 +35,11 @@ public class CommandManager {
     }
 
     public ArrayList<String> getHistory() {
-        System.out.println(history);
+        int i = 1;
+        for (String element : history){
+            System.out.println(i + ". " + element);
+            i++;
+        }
         return history;
     }
 
@@ -47,4 +51,7 @@ public class CommandManager {
 
     }
 
+    public Deque<String> getFiles() {
+        return files;
+    }
 }

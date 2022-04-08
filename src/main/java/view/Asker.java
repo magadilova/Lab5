@@ -1,6 +1,7 @@
 package view;
 
 import model.*;
+import model.fieldException.FieldException;
 
 import java.util.Scanner;
 
@@ -27,7 +28,7 @@ public class Asker {
                 System.out.println("Enter product's name");
                 name = scanner.nextLine().trim();
                 if (name.isEmpty()){
-                    throw new FieldException("Exception: Field 'name' can not be empty \nPlease try again");
+                    throw new FieldException("Product's name can not be empty \nPlease try again");
                 }
                 break;
             } catch (FieldException e) {
@@ -47,15 +48,15 @@ public class Asker {
         Integer x;
         while (true) {
             try {
-                System.out.println("Enter X coordinate");
+                System.out.println("Enter X coordinate (integer):");
                 strX = scanner.nextLine().trim();
                 if (strX.isEmpty()){
-                    throw new FieldException("Exception: Field 'coordinates X' can not be null \nPlease try again");
+                    throw new FieldException("X coordinate can not be null \nPlease try again");
                 }
                 x = Integer.parseInt(strX);
                 break;
             } catch (NumberFormatException e) {
-                System.out.println("NumberFormatException: Wrong format.");
+                System.out.println("Wrong format! Format must be integer.");
 
             } catch (FieldException e) {
                 System.out.println(e.getMessage());
@@ -75,15 +76,15 @@ public class Asker {
         Long y;
         while (true) {
             try {
-                System.out.println("Enter Y coordinate");
+                System.out.println("Enter Y coordinate (long)");
                 strY = scanner.nextLine().trim();
                 if (strY.isEmpty()){
-                    throw new FieldException("Exception: Field 'coordinates Y' can not be null \nPlease try again");
+                    throw new FieldException("Y coordinates can not be null \nPlease try again");
                 }
                 y = Long.parseLong(strY);
                 break;
             } catch (NumberFormatException e) {
-                System.out.println("NumberFormatException: Wrong format.");
+                System.out.println("Wrong format! Format must be long.");
             } catch (FieldException e) {
                 System.out.println(e.getMessage());
 
@@ -108,15 +109,15 @@ public class Asker {
         double price;
         while (true) {
             try {
-                System.out.println("Enter price");
+                System.out.println("Enter price (double)");
                 strPrice = scanner.nextLine().trim();
                 price = Double.parseDouble(strPrice);
                 if(price <= 0){
-                    throw new FieldException("Exception: Field 'price' can not be less or equal zero \nPlease try again");
+                    throw new FieldException("Price can not be less or equal zero \nPlease try again");
                 }
                 break;
             } catch (NumberFormatException e) {
-                System.out.println("NumberFormatException: Wrong format.");
+                System.out.println("Wrong format! Format must be double.");
             } catch (FieldException e) {
                 System.out.println(e.getMessage());
 
@@ -155,12 +156,12 @@ public class Asker {
         long cost;
         while (true) {
             try {
-                System.out.println("Enter manufacture cost");
+                System.out.println("Enter manufacture cost (long)");
                 strCost = scanner.nextLine().trim();
                 cost = Long.parseLong(strCost);
                 break;
             } catch (NumberFormatException e) {
-                System.out.println(e.getMessage());
+                System.out.println("Wrong format! Format must be double.");
                 System.out.println("Please try again");
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
@@ -201,10 +202,10 @@ public class Asker {
         String nameOwner;
         while (true) {
             try {
-                System.out.println("Enter person's name");
+                System.out.println("Enter owner's name");
                 nameOwner = scanner.nextLine().trim();
                 if (nameOwner.isEmpty()){
-                    throw new FieldException("Exception: Field 'owner' can not be null \nPlease try again");
+                    throw new FieldException("Owner can not be null \nPlease try again");
                 }
                 break;
             } catch (FieldException e) {
@@ -228,7 +229,7 @@ public class Asker {
                 EyeColor.showEyeColorsList();
                 strColor = scanner.nextLine().trim().toUpperCase();
                 if (strColor.isEmpty()){
-                    throw new FieldException("Exception: Field 'eyeColor' can not be null \n Please try again");
+                    throw new FieldException("Eye color can not be null \n Please try again");
                 }
                 color = EyeColor.valueOf(strColor);
                 break;
@@ -256,7 +257,7 @@ public class Asker {
                 HairColor.showHairColorList();
                 strColor = scanner.nextLine().trim().toUpperCase();
                 if (strColor.isEmpty()){
-                    throw new FieldException("Exception: Field 'hairColor' can not be null \n Please try again");
+                    throw new FieldException("Hair color can not be null \n Please try again");
                 }
                 color = HairColor.valueOf(strColor);
                 break;
@@ -304,13 +305,12 @@ public class Asker {
         float x;
         while (true) {
             try {
-                System.out.println("Enter X coordinate");
+                System.out.println("Enter X coordinate (float)");
                 strX = scanner.nextLine().trim();
-                if (strX.equals("")){strX = null;}
                 x = Float.parseFloat(strX);
                 break;
             } catch (NumberFormatException e) {
-                System.out.println(e.getMessage());
+                System.out.println("Wrong format! Format must be float.");
                 System.out.println("Please try again");
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
@@ -329,13 +329,12 @@ public class Asker {
         double y;
         while (true) {
             try {
-                System.out.println("Enter Y coordinate");
+                System.out.println("Enter Y coordinate (double)");
                 strY = scanner.nextLine().trim();
-                if (strY.equals("")){strY = null;}
                 y = Double.parseDouble(strY);
                 break;
             } catch (NumberFormatException e) {
-                System.out.println(e.getMessage());
+                System.out.println("Wrong format! Format must be double.");
                 System.out.println("Please try again");
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
@@ -354,13 +353,12 @@ public class Asker {
         double z;
         while (true) {
             try {
-                System.out.println("Enter Z coordinate");
+                System.out.println("Enter Z coordinate (double)");
                 strZ = scanner.nextLine().trim();
-                if (strZ.equals("")){strZ = null;}
                 z = Double.parseDouble(strZ);
                 break;
             } catch (NumberFormatException e) {
-                System.out.println(e.getMessage());
+                System.out.println("Wrong format! Format must be double.");
                 System.out.println("Please try again");
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());

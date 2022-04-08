@@ -1,4 +1,4 @@
-package options;
+package options.fileException;
 
 
 public class FileException extends RuntimeException {

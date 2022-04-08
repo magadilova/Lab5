@@ -1,6 +1,7 @@
 package model;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
+import model.fieldException.FieldException;
 
 
 import java.time.LocalDate;

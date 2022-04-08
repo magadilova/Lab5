@@ -1,6 +1,7 @@
 package controller;
 
 import model.*;
+import model.fieldException.FieldException;
 import view.commandException.WrongFieldComandException;
 
 
@@ -10,7 +11,7 @@ import java.time.format.FormatStyle;
 import java.util.*;
 
 
-public class LinkedHashSetCollectionManager { //singleton
+public class LinkedHashSetCollectionManager {
     private final LinkedHashSet<Product> set = new LinkedHashSet<>();
     private final LocalDateTime dateInitialization = LocalDateTime.now();
 
@@ -96,13 +97,13 @@ public class LinkedHashSetCollectionManager { //singleton
 
     public void deleteByID(Long id) {
         if (!set.removeIf(element -> element.getId().equals(id)))
-            throw new WrongFieldComandException("There is no element with the given field \"id\" value");
+            throw new WrongFieldComandException("There is no element with the given \"id\" value");
 
     }
 
     public void deleteByPN(String partNumber) {
         if (!set.removeIf(item -> item.getPartNumber().equals(partNumber)))
-            throw new WrongFieldComandException("There is no element with the given field \" part number \" value");
+            throw new WrongFieldComandException("There is no element with the given \" part number \" value");
 
     }
 
