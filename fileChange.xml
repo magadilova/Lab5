@@ -1,5 +1,30 @@
 <Collection>
   <product>
+    <id>441488344</id>
+    <name>Bowl</name>
+    <coordinates>
+      <coordinatesX>23</coordinatesX>
+      <coordinatesY>201</coordinatesY>
+    </coordinates>
+    <creationDate>2022-04-03</creationDate>
+    <price>329.0</price>
+    <partNumber>7345617</partNumber>
+    <manufactureCost>21</manufactureCost>
+    <unitOfMeasure>MILLIGRAMS</unitOfMeasure>
+    <person>
+      <name>Hufflepuff</name>
+      <passportID>923555737</passportID>
+      <eyeColor>BROWN</eyeColor>
+      <hairColor>YELLOW</hairColor>
+      <country>ITALY</country>
+      <location>
+        <locationX>10.0</locationX>
+        <locationY>1.2</locationY>
+        <locationZ>23.0</locationZ>
+      </location>
+    </person>
+  </product>
+  <product>
     <id>1439700657</id>
     <name>Diadem</name>
     <coordinates>
@@ -125,27 +150,27 @@
     </person>
   </product>
   <product>
-    <id>992831284</id>
-    <name>Ring</name>
+    <id>1890117712</id>
+    <name>name</name>
     <coordinates>
-      <coordinatesX>23</coordinatesX>
-      <coordinatesY>201</coordinatesY>
+      <coordinatesX>2</coordinatesX>
+      <coordinatesY>3</coordinatesY>
     </coordinates>
-    <creationDate>2022-04-03</creationDate>
-    <price>1.12</price>
-    <partNumber>26248</partNumber>
-    <manufactureCost>25</manufactureCost>
+    <creationDate>2022-04-05</creationDate>
+    <price>3.0</price>
+    <partNumber>20</partNumber>
+    <manufactureCost>20</manufactureCost>
     <unitOfMeasure>MILLIGRAMS</unitOfMeasure>
     <person>
-      <name>Marvolo</name>
-      <passportID>994978565</passportID>
-      <eyeColor>GREEN</eyeColor>
-      <hairColor>BLACK</hairColor>
-      <country>INDIA</country>
+      <name>test</name>
+      <passportID>1445935115</passportID>
+      <eyeColor>BROWN</eyeColor>
+      <hairColor>BROWN</hairColor>
+      <country>ITALY</country>
       <location>
-        <locationX>10.0</locationX>
-        <locationY>1.2</locationY>
-        <locationZ>23.0</locationZ>
+        <locationX>2.0</locationX>
+        <locationY>3.0</locationY>
+        <locationZ>4.0</locationZ>
       </location>
     </person>
   </product>

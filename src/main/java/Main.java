@@ -1,17 +1,22 @@
-import Controller.LinkedHashSetCollectionManager;
-import Model.*;
+import controller.LinkedHashSetCollectionManager;
+import model.*;
 
-import Options.FileWorker;
-import Options.XmlWorker;
-import View.Asker;
-import View.Commands.*;
-import View.CommandManager;
+import options.FileWorker;
+import options.XmlWorker;
+import view.Asker;
+import view.ConsoleInterface;
+import view.commands.*;
+import view.CommandManager;
 
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.nio.charset.StandardCharsets;
 import java.util.LinkedHashSet;
 import java.util.Scanner;
 
 
 public class Main {
+    private  static final String value = "$ ";
     public static void main(String[] args) {
 //        Coordinates coordinates = new Coordinates(23, 201L);
 //        Location location = new Location(10, 1.2, 23);
@@ -53,23 +58,34 @@ public class Main {
 
         linkedHashSetCollectionManager.load(xmlFrom);
 
-        commandManager.putCommands(new AbstractCommand[]{
-                new UpdateCommand(linkedHashSetCollectionManager,asker),
-                new ShowCommand(linkedHashSetCollectionManager.getSet()),
-                new RemovePNCommand(linkedHashSetCollectionManager),
-                new RemoveLCommand(linkedHashSetCollectionManager,asker),
-                new RemoveIDCommand(linkedHashSetCollectionManager),
-                new RemoveGCommand(linkedHashSetCollectionManager,asker),
-                new InfoCommand(linkedHashSetCollectionManager),
+        commandManager.putCommands(
+                new UpdateCommand(linkedHashSetCollectionManager,asker, commandManager),
+                new ShowCommand(linkedHashSetCollectionManager.getSet(), commandManager),
+                new RemovePNCommand(linkedHashSetCollectionManager, commandManager),
+                new RemoveLCommand(linkedHashSetCollectionManager,asker,commandManager),
+                new RemoveIDCommand(linkedHashSetCollectionManager, commandManager),
+                new RemoveGCommand(linkedHashSetCollectionManager,asker, commandManager),
+                new InfoCommand(linkedHashSetCollectionManager,commandManager),
                 new HelpCommand(commandManager),
-                new FilterPNCommand(linkedHashSetCollectionManager.getSet()),
-                new FilterLCommand(linkedHashSetCollectionManager.getSet()),
+                new FilterPNCommand(linkedHashSetCollectionManager.getSet(), commandManager),
+                new FilterLCommand(linkedHashSetCollectionManager.getSet(), commandManager),
                 new ExitCommand(),
                 new ExecuteCommand(fileWorker, commandManager, linkedHashSetCollectionManager,xmlWorker),
-                new ClearCommand(linkedHashSetCollectionManager),
-                new AddCommand(asker, linkedHashSetCollectionManager),
-                new SaveCommand(fileWorker,xmlWorker, linkedHashSetCollectionManager),
-                new HistoryCommand(commandManager)});
+                new ClearCommand(linkedHashSetCollectionManager,commandManager),
+                new AddCommand(asker, linkedHashSetCollectionManager, commandManager),
+                new SaveCommand(fileWorker,xmlWorker, linkedHashSetCollectionManager, commandManager),
+                new HistoryCommand(commandManager));
+
+        ConsoleInterface consoleInterface = new ConsoleInterface(new OutputStreamWriter(System.out, StandardCharsets.UTF_8), new InputStreamReader(System.in, StandardCharsets.UTF_8), true);
+
+        while (true){
+            consoleInterface.writeWithoutSpace(value);
+            String line = consoleInterface.read();
+            commandManager.executeCommand(line);
+        }
+
+
+
 
 //        linkedHashSetCollectionManager.getSet().add(p1);
 //        linkedHashSetCollectionManager.getSet().add(p2);
@@ -82,7 +98,7 @@ public class Main {
 
 
 //        commandManager.executeCommand("update_id 441488344" );
-        commandManager.executeCommand("show");
+//        commandManager.executeCommand("add");
 //        commandManager.executeCommand("clear");
 //        commandManager.executeCommand("remove_any_by_part_number 2987");
 //        commandManager.executeCommand("remove_by_id 441488344");
@@ -90,18 +106,21 @@ public class Main {
 //        commandManager.executeCommand("exit");
 //        commandManager.executeCommand("filter_starts_with_part_number 73456");
 //        commandManager.executeCommand("execute_script scriptAdd.txt");
-//        commandManager.executeCommand("add");
+//        commandManager.executeCommand("show" );
 
 
-//
+//        Console console = System.console();
+
 //        while (true) {
-//            Console console = System.console();
+//            System.out.println(value);
+//
 //            if (console != null) {
 //                System.out.println("Console app started");
 //                commandManager.executeCommand(console.readLine("Please enter command \n"));
 //            }
 //        }
 
-
+        //ConsoleManager consoleManager = new ConsoleManager(new OutputStreamWriter(System.out, StandardCharsets.UTF_8), new InputStreamReader(System.in, StandardCharsets.UTF_8), true);
+//        ConsoleInterface consoleInterface = new ConsoleInterface(new OutputStreamWriter(System.out, StandardCharsets.UTF_8), new InputStreamReader(System.in, StandardCharsets.UTF_8),true);
     }
 }
