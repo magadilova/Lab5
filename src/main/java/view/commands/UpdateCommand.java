@@ -3,7 +3,7 @@ package view.commands;
 import controller.LinkedHashSetCollectionManager;
 import model.Product;
 import view.Asker;
-import view.CommandManager;
+import view.ConsoleClient;
 import view.commandException.EmptyFieldCommandException;
 import view.commandException.WrongFieldComandException;
 
@@ -12,14 +12,14 @@ import java.util.ArrayList;
 public class UpdateCommand extends  AbstractCommand {
     LinkedHashSetCollectionManager linkedHashSetCollectionManager;
     Asker asker;
-    CommandManager commandManager;
+    ConsoleClient consoleClient;
 
-    public UpdateCommand(LinkedHashSetCollectionManager linkedHashSetCollectionManager, Asker asker, CommandManager commandManager) {
+    public UpdateCommand(LinkedHashSetCollectionManager linkedHashSetCollectionManager, Asker asker, ConsoleClient consoleClient) {
         super("update_id", "{element}", "update the value of the collection item " +
                 "whose id is the same as the given one");
         this.linkedHashSetCollectionManager = linkedHashSetCollectionManager;
         this.asker = asker;
-        this.commandManager = commandManager;
+        this.consoleClient = consoleClient;
     }
 
 
@@ -45,8 +45,8 @@ public class UpdateCommand extends  AbstractCommand {
                         product.setId(id);
                     }
                 }
-                System.out.println("The element with the given ID was successfully updated");
-                commandManager.addToHistory(getName());
+                consoleClient.println("The element with the given ID was successfully updated");
+                consoleClient.addToHistory(getName());
             } else throw new EmptyFieldCommandException("Exception: This command must not have any characters");
         } catch (EmptyFieldCommandException | WrongFieldComandException e) {
             System.out.println(e.getMessage());

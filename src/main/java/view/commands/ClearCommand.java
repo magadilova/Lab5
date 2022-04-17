@@ -1,7 +1,7 @@
 package view.commands;
 
 import controller.LinkedHashSetCollectionManager;
-import view.CommandManager;
+import view.ConsoleClient;
 import view.commandException.EmptyFieldCommandException;
 
 /**
@@ -10,12 +10,12 @@ import view.commandException.EmptyFieldCommandException;
 
 public class ClearCommand extends AbstractCommand{
     LinkedHashSetCollectionManager linkedHashSetCollectionManager;
-    CommandManager commandManager;
+    ConsoleClient consoleClient;
 
-    public ClearCommand( LinkedHashSetCollectionManager linkedHashSetCollectionManager, CommandManager commandManager) {
+    public ClearCommand( LinkedHashSetCollectionManager linkedHashSetCollectionManager, ConsoleClient consoleClient) {
         super("clear", "", "clear the collection");
         this.linkedHashSetCollectionManager = linkedHashSetCollectionManager;
-        this.commandManager = commandManager;
+        this.consoleClient = consoleClient;
     }
 
     @Override
@@ -23,8 +23,8 @@ public class ClearCommand extends AbstractCommand{
         try {
             if (arguments.isEmpty()) {
                 linkedHashSetCollectionManager.clear();
-                System.out.println("Collection has been cleared");
-                commandManager.addToHistory(getName());
+                consoleClient.println("Collection has been cleared");
+                consoleClient.addToHistory(getName());
                 return true;
             } else throw new EmptyFieldCommandException("Exception: This command must not have any characters");
         } catch (EmptyFieldCommandException e) {

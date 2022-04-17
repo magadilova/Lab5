@@ -3,6 +3,7 @@ package view;
 import model.*;
 import model.fieldException.FieldException;
 
+import java.io.Console;
 import java.util.Scanner;
 
 
@@ -11,7 +12,7 @@ import java.util.Scanner;
  */
 
 public class Asker {
-    private final Scanner scanner;
+    private Scanner scanner = null;
 
     public Asker(Scanner scanner) {
         this.scanner = scanner;
@@ -35,6 +36,7 @@ public class Asker {
                 System.out.println(e.getMessage());
             }
         }
+
         return name;
     }
 
@@ -306,7 +308,7 @@ public class Asker {
         while (true) {
             try {
                 System.out.println("Enter X coordinate (float)");
-                strX = scanner.nextLine().trim();
+                strX= scanner.nextLine().trim();
                 x = Float.parseFloat(strX);
                 break;
             } catch (NumberFormatException e) {

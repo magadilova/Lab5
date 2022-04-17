@@ -1,6 +1,6 @@
 package view.commands;
 
-import view.CommandManager;
+import view.ConsoleClient;
 import view.commandException.EmptyFieldCommandException;
 
 /**
@@ -8,19 +8,19 @@ import view.commandException.EmptyFieldCommandException;
  */
 
 public class HistoryCommand extends AbstractCommand {
-    CommandManager commandManager;
+    ConsoleClient consoleClient;
 
-    public HistoryCommand(CommandManager commandManager) {
+    public HistoryCommand(ConsoleClient consoleClient) {
         super("history", "", "print the last 12 commands");
-        this.commandManager = commandManager;
+        this.consoleClient = consoleClient;
     }
 
     @Override
     public boolean execute(String arguments) {
         try {
             if (arguments.isEmpty()) {
-                commandManager.getHistory();
-                System.out.println("A list of commands is displayed");
+                consoleClient.getHistory();
+                consoleClient.println("A list of commands is displayed");
                 return true;
             } else throw new EmptyFieldCommandException("Exception: This command must not have any characters");
         } catch (EmptyFieldCommandException e) {

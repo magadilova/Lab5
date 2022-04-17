@@ -3,7 +3,7 @@ package view.commands;
 import controller.LinkedHashSetCollectionManager;
 import model.*;
 import view.Asker;
-import view.CommandManager;
+import view.ConsoleClient;
 import view.commandException.EmptyFieldCommandException;
 
 import java.util.ArrayList;
@@ -15,13 +15,13 @@ import java.util.ArrayList;
 public class RemoveGCommand extends AbstractCommand{
     LinkedHashSetCollectionManager linkedHashSetCollectionManager;
     Asker asker;
-    CommandManager commandManager;
+    ConsoleClient consoleClient;
 
-    public RemoveGCommand(LinkedHashSetCollectionManager linkedHashSetCollectionManager, Asker asker,CommandManager commandManager) {
+    public RemoveGCommand(LinkedHashSetCollectionManager linkedHashSetCollectionManager, Asker asker, ConsoleClient consoleClient) {
         super("remove_greater", "{element}", "remove all items from the collection that exceed the specified");
         this.linkedHashSetCollectionManager = linkedHashSetCollectionManager;
         this.asker = asker;
-        this.commandManager = commandManager;
+        this.consoleClient = consoleClient;
     }
 
     @Override
@@ -38,8 +38,8 @@ public class RemoveGCommand extends AbstractCommand{
                 for (Product product : arrayList) {
                     linkedHashSetCollectionManager.deleteObject(product);
                 }
-                System.out.println("Removed from collection all elements set given");
-                commandManager.addToHistory(getName());
+                consoleClient.println("Removed from collection all elements set given");
+                consoleClient.addToHistory(getName());
                 return true;
             } else throw new EmptyFieldCommandException("Exception: This command must not have any characters");
         } catch (EmptyFieldCommandException e){

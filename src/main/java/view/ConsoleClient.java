@@ -2,17 +2,17 @@ package view;
 
 import view.commands.AbstractCommand;
 
+import java.io.Console;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Deque;
 import java.util.LinkedHashMap;
 
 
-public class CommandManager {
+public class ConsoleClient {
     LinkedHashMap<String, AbstractCommand> commands = new LinkedHashMap<>();
     ArrayList<String> history = new ArrayList();
     private Deque<String> files = new ArrayDeque<>();
-
 
     public void putCommands(AbstractCommand... commands) {
         for (AbstractCommand command : commands) {
@@ -51,7 +51,17 @@ public class CommandManager {
 
     }
 
-    public Deque<String> getFiles() {
-        return files;
+    public void startApp() {
+
+        while (true) {
+            Console console = System.console();
+            String command = console.readLine("\nEnter the command\n " ).trim();
+            executeCommand(command);
+        }
+
+    }
+
+    static public void println(String argument) {
+        System.out.println(argument);
     }
 }

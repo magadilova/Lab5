@@ -1,7 +1,7 @@
 package view.commands;
 
 import model.Product;
-import view.CommandManager;
+import view.ConsoleClient;
 import view.commandException.EmptyFieldCommandException;
 
 import java.util.LinkedHashSet;
@@ -12,13 +12,13 @@ import java.util.LinkedHashSet;
 
 public class ShowCommand extends AbstractCommand {
     LinkedHashSet<Product> collection;
-    CommandManager commandManager;
+    ConsoleClient consoleClient;
 
-    public ShowCommand(LinkedHashSet<Product> collection, CommandManager commandManager) {
+    public ShowCommand(LinkedHashSet<Product> collection, ConsoleClient consoleClient) {
         super("show", "", "output to the standard output stream all the elements" +
                 " of the collection in a string representation");
         this.collection = collection;
-        this.commandManager = commandManager;
+        this.consoleClient = consoleClient;
     }
 
     @Override
@@ -30,8 +30,8 @@ public class ShowCommand extends AbstractCommand {
                         System.out.println(product.toString() + "\n");
 
                     }
-                } else System.out.println("Oops, сollection is empty");
-                commandManager.addToHistory(getName());
+                } else consoleClient.println("Oops, сollection is empty");
+                consoleClient.addToHistory(getName());
                 return true;
             } else throw new EmptyFieldCommandException("Exception: This command must not have any characters");
         } catch (EmptyFieldCommandException e) {

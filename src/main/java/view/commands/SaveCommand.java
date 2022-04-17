@@ -4,7 +4,7 @@ import controller.LinkedHashSetCollectionManager;
 import model.*;
 import options.FileWorker;
 import options.XmlWorker;
-import view.CommandManager;
+import view.ConsoleClient;
 import view.commandException.EmptyFieldCommandException;
 
 import java.io.IOException;
@@ -14,14 +14,14 @@ public class SaveCommand extends AbstractCommand {
     FileWorker fileWorker;
     XmlWorker xmlWorker;
     LinkedHashSetCollectionManager linkedHashSetCollectionManager;
-    CommandManager commandManager;
+    ConsoleClient consoleClient;
 
-    public SaveCommand(FileWorker fileWorker, XmlWorker xmlWorker, LinkedHashSetCollectionManager linkedHashSetCollectionManager, CommandManager commandManager) {
+    public SaveCommand(FileWorker fileWorker, XmlWorker xmlWorker, LinkedHashSetCollectionManager linkedHashSetCollectionManager, ConsoleClient consoleClient) {
         super("save", "", "save the collection to a file");
         this.fileWorker = fileWorker;
         this.xmlWorker = xmlWorker;
         this.linkedHashSetCollectionManager = linkedHashSetCollectionManager;
-        this.commandManager = commandManager;
+        this.consoleClient = consoleClient;
     }
 
 
@@ -43,8 +43,8 @@ public class SaveCommand extends AbstractCommand {
                 });
 
                 fileWorker.saveFile(xml);
-                System.out.println("Collection saved");
-                commandManager.addToHistory(getName());
+                consoleClient.println("Collection saved");
+                consoleClient.addToHistory(getName());
                 return true;
             } else throw new EmptyFieldCommandException("Exception: This command must not have any characters");
         } catch (EmptyFieldCommandException | IOException e) {

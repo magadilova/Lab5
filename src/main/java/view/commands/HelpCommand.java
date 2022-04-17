@@ -1,6 +1,6 @@
 package view.commands;
 
-import view.CommandManager;
+import view.ConsoleClient;
 import view.commandException.EmptyFieldCommandException;
 
 
@@ -9,20 +9,20 @@ import view.commandException.EmptyFieldCommandException;
  */
 
 public class HelpCommand extends AbstractCommand{
-    CommandManager commandManager;
+    ConsoleClient consoleClient;
 
-    public HelpCommand(CommandManager commandManager) {
+    public HelpCommand(ConsoleClient consoleClient) {
         super("help", "", "display help for available commands");
-        this.commandManager = commandManager;
+        this.consoleClient = consoleClient;
     }
 
     @Override
     public boolean execute(String arguments) {
         try {
             if (arguments.isEmpty()){
-                commandManager.getCommands().forEach((key,value) -> System.out.println(key + " " + getParameters() +": " + value.getDescription()));
-                System.out.println("Help has been successfully issued");
-                commandManager.addToHistory(getName());
+                consoleClient.getCommands().forEach((key, value) -> System.out.println(key + " " + getParameters() +": " + value.getDescription()));
+                consoleClient.println("Help has been successfully issued");
+                consoleClient.addToHistory(getName());
                 return true;
             } else throw new EmptyFieldCommandException("Exception: This command must not have any characters");
         } catch (EmptyFieldCommandException e) {
