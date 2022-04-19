@@ -7,12 +7,16 @@ import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Deque;
 import java.util.LinkedHashMap;
+import java.util.Scanner;
 
 
 public class ConsoleClient {
     LinkedHashMap<String, AbstractCommand> commands = new LinkedHashMap<>();
     ArrayList<String> history = new ArrayList();
     private Deque<String> files = new ArrayDeque<>();
+    static public Console scanner = System.console();
+    static public boolean fileMode = false;
+    private static Deque<Scanner> scanners = new ArrayDeque<>();
 
     public void putCommands(AbstractCommand... commands) {
         for (AbstractCommand command : commands) {
@@ -52,11 +56,14 @@ public class ConsoleClient {
     }
 
     public void startApp() {
-
         while (true) {
-            Console console = System.console();
-            String command = console.readLine("\nEnter the command\n " ).trim();
-            executeCommand(command);
+            try{
+                Console console = System.console();
+                String command = console.readLine("\nEnter the command\n-> ").trim();
+                executeCommand(command);
+            } catch (NullPointerException e) {
+                startApp();
+            }
         }
 
     }
@@ -64,4 +71,16 @@ public class ConsoleClient {
     static public void println(String argument) {
         System.out.println(argument);
     }
+    public static void setFileMode(boolean fileMode) {
+        ConsoleClient.fileMode = fileMode;
+    }
+
+    public Deque<String> getFiles() {
+        return files;
+    }
+
+    public static Deque<Scanner> getScanners() {
+        return scanners;
+    }
+
 }

@@ -14,9 +14,8 @@ public class AddCommand extends AbstractCommand{
     LinkedHashSetCollectionManager linkedHashSetCollectionManager;
     ConsoleClient consoleClient;
 
-    public AddCommand( Asker asker, LinkedHashSetCollectionManager linkedHashSetCollectionManager, ConsoleClient consoleClient) {
+    public AddCommand(LinkedHashSetCollectionManager linkedHashSetCollectionManager, ConsoleClient consoleClient) {
         super("add", "{element}", "add a new element to the collection");
-        this.asker = asker;
         this.linkedHashSetCollectionManager = linkedHashSetCollectionManager;
         this.consoleClient = consoleClient;
     }
@@ -25,6 +24,10 @@ public class AddCommand extends AbstractCommand{
     public boolean execute(String arguments) {
         try {
             if (arguments.isEmpty()) {
+                if (ConsoleClient.fileMode)
+                    asker = new Asker(ConsoleClient.getScanners().getLast());
+                else
+                    asker = new Asker(ConsoleClient.scanner);
                 linkedHashSetCollectionManager.add(asker.startAsker());
                 consoleClient.println("The element was successfully added.");
                 consoleClient.addToHistory(getName());

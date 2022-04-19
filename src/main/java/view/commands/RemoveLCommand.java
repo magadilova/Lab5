@@ -16,11 +16,10 @@ public class RemoveLCommand  extends  AbstractCommand {
     Asker asker;
     ConsoleClient consoleClient;
 
-    public RemoveLCommand(LinkedHashSetCollectionManager linkedHashSetCollectionManager, Asker asker, ConsoleClient consoleClient) {
+    public RemoveLCommand(LinkedHashSetCollectionManager linkedHashSetCollectionManager, ConsoleClient consoleClient) {
         super("remove_lower", "{element}", "remove all items from the collection " +
                 "that are smaller than the specified");
         this.linkedHashSetCollectionManager = linkedHashSetCollectionManager;
-        this.asker = asker;
         this.consoleClient = consoleClient;
     }
 
@@ -29,6 +28,8 @@ public class RemoveLCommand  extends  AbstractCommand {
     public boolean execute(String arguments) {
         try {
             if (arguments.isEmpty()) {
+                if(ConsoleClient.fileMode) asker = new Asker(ConsoleClient.getScanners().getLast());
+                else asker = new Asker(ConsoleClient.scanner);
                 Product productToCompare = asker.startAsker();
                 ArrayList<Product> arrayList = new ArrayList<>();
                 for (Product product : linkedHashSetCollectionManager.getSet()) {
@@ -49,3 +50,4 @@ public class RemoveLCommand  extends  AbstractCommand {
         return false;
     }
 }
+

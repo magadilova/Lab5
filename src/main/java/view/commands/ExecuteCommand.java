@@ -12,6 +12,8 @@ import javax.script.ScriptException;
 import java.io.File;
 import java.io.FileNotFoundException;
 
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -32,19 +34,24 @@ public class ExecuteCommand extends AbstractCommand {
 
     @Override
     public boolean execute(String arguments) {
+//        ClassLoader classLoader = ClassLoader.getSystemClassLoader();
         ArrayList<String> nameFile = new ArrayList();
         nameFile.add(arguments);
+        File file = new File(arguments);
         try {
-            Scanner scanner = new Scanner(new File(arguments));
+            if (!file.exists()) {
+                throw new FileNotFoundException("File not found.");
+            }
+            Scanner scanner = new Scanner(file);
             if (!arguments.equals("")) {
                 while (scanner.hasNext()) {
                     String element = scanner.nextLine();
                     String[] strCommand = element.trim().split(" ", 2);
-                    if (strCommand[0].equals("execute_script") && strCommand[1].equals(arguments)){
+                    if (strCommand[0].equals("execute_script") && strCommand[1].equals(arguments)) {
                         throw new EmptyFieldCommandException("You have already run the script");
                     }
-                    if (strCommand[0].equals("execute_script")){
-                        for (String str : nameFile){
+                    if (strCommand[0].equals("execute_script")) {
+                        for (String str : nameFile) {
                             str.equals(strCommand[1]);
                             throw new ScriptException("Scripts can't be recursive!!!");
                         }
@@ -60,12 +67,11 @@ public class ExecuteCommand extends AbstractCommand {
                         linkedHashSetCollectionManager.getSet().add(product1);
                         linkedHashSetCollectionManager.sortSet();
                         System.out.println("The element was successfully added.");
-                    }
-                    else consoleClient.executeCommand(element);
+                    } else consoleClient.executeCommand(element);
                     consoleClient.addToHistory(getName());
                 }
             }
-        } catch (FileNotFoundException | ScriptException e) {
+        } catch (ScriptException | FileNotFoundException e) {
             System.out.println(e.getMessage());
         }
         return false;

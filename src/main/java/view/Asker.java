@@ -13,9 +13,14 @@ import java.util.Scanner;
 
 public class Asker {
     private Scanner scanner = null;
+    private Console console = null;
 
     public Asker(Scanner scanner) {
         this.scanner = scanner;
+    }
+
+    public Asker(Console console) {
+        this.console = console;
     }
 
     /**
@@ -27,7 +32,7 @@ public class Asker {
         while (true) {
             try {
                 System.out.println("Enter product's name");
-                name = scanner.nextLine().trim();
+                name = console.readLine().trim();
                 if (name.isEmpty()){
                     throw new FieldException("Product's name can not be empty \nPlease try again");
                 }
@@ -51,7 +56,7 @@ public class Asker {
         while (true) {
             try {
                 System.out.println("Enter X coordinate (integer):");
-                strX = scanner.nextLine().trim();
+                strX = console.readLine().trim();
                 if (strX.isEmpty()){
                     throw new FieldException("X coordinate can not be null \nPlease try again");
                 }
@@ -79,7 +84,7 @@ public class Asker {
         while (true) {
             try {
                 System.out.println("Enter Y coordinate (long)");
-                strY = scanner.nextLine().trim();
+                strY = console.readLine().trim();
                 if (strY.isEmpty()){
                     throw new FieldException("Y coordinates can not be null \nPlease try again");
                 }
@@ -112,7 +117,7 @@ public class Asker {
         while (true) {
             try {
                 System.out.println("Enter price (double)");
-                strPrice = scanner.nextLine().trim();
+                strPrice = console.readLine().trim();
                 price = Double.parseDouble(strPrice);
                 if(price <= 0){
                     throw new FieldException("Price can not be less or equal zero \nPlease try again");
@@ -138,7 +143,7 @@ public class Asker {
         while (true) {
             try {
                 System.out.println("Enter part number");
-                partNumber = scanner.nextLine().trim();
+                partNumber = console.readLine().trim();
                 break;
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
@@ -159,7 +164,7 @@ public class Asker {
         while (true) {
             try {
                 System.out.println("Enter manufacture cost (long)");
-                strCost = scanner.nextLine().trim();
+                strCost = console.readLine().trim();
                 cost = Long.parseLong(strCost);
                 break;
             } catch (NumberFormatException e) {
@@ -184,7 +189,7 @@ public class Asker {
             try {
                 System.out.println("Choose unit of measure: ");
                 UnitOfMeasure.showUnitOfMeasureList();
-                strUnit = scanner.nextLine().trim().toUpperCase();
+                strUnit = console.readLine().trim().toUpperCase();
                 unit = UnitOfMeasure.valueOf(strUnit);
                 break;
             } catch (IllegalArgumentException e) {
@@ -205,7 +210,7 @@ public class Asker {
         while (true) {
             try {
                 System.out.println("Enter owner's name");
-                nameOwner = scanner.nextLine().trim();
+                nameOwner = console.readLine().trim();
                 if (nameOwner.isEmpty()){
                     throw new FieldException("Owner can not be null \nPlease try again");
                 }
@@ -229,7 +234,7 @@ public class Asker {
             try {
                 System.out.println("Choose eyes' color: ");
                 EyeColor.showEyeColorsList();
-                strColor = scanner.nextLine().trim().toUpperCase();
+                strColor = console.readLine().trim().toUpperCase();
                 if (strColor.isEmpty()){
                     throw new FieldException("Eye color can not be null \n Please try again");
                 }
@@ -257,7 +262,7 @@ public class Asker {
             try {
                 System.out.println("Choose hairs' color:");
                 HairColor.showHairColorList();
-                strColor = scanner.nextLine().trim().toUpperCase();
+                strColor = console.readLine().trim().toUpperCase();
                 if (strColor.isEmpty()){
                     throw new FieldException("Hair color can not be null \n Please try again");
                 }
@@ -285,13 +290,13 @@ public class Asker {
             try {
                 System.out.println("Choose country:");
                 Country.showCountryList();
-                strCountry = scanner.nextLine().trim().toUpperCase();
+                strCountry = console.readLine().trim().toUpperCase();
                 if (strCountry.isEmpty()){strCountry = null;}
                 country = Country.valueOf(strCountry);
                 break;
             } catch (IllegalArgumentException e) {
                 System.out.println("Country wasn't found. \n"
-                + "Please try again. Must be entered as shown in the list.");
+                        + "Please try again. Must be entered as shown in the list.");
             }
         }
         return country;
@@ -308,7 +313,7 @@ public class Asker {
         while (true) {
             try {
                 System.out.println("Enter X coordinate (float)");
-                strX= scanner.nextLine().trim();
+                strX = console.readLine().trim();
                 x = Float.parseFloat(strX);
                 break;
             } catch (NumberFormatException e) {
@@ -332,7 +337,7 @@ public class Asker {
         while (true) {
             try {
                 System.out.println("Enter Y coordinate (double)");
-                strY = scanner.nextLine().trim();
+                strY = console.readLine().trim();
                 y = Double.parseDouble(strY);
                 break;
             } catch (NumberFormatException e) {
@@ -356,7 +361,7 @@ public class Asker {
         while (true) {
             try {
                 System.out.println("Enter Z coordinate (double)");
-                strZ = scanner.nextLine().trim();
+                strZ = console.readLine().trim();
                 z = Double.parseDouble(strZ);
                 break;
             } catch (NumberFormatException e) {

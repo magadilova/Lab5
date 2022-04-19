@@ -17,10 +17,9 @@ public class RemoveGCommand extends AbstractCommand{
     Asker asker;
     ConsoleClient consoleClient;
 
-    public RemoveGCommand(LinkedHashSetCollectionManager linkedHashSetCollectionManager, Asker asker, ConsoleClient consoleClient) {
+    public RemoveGCommand(LinkedHashSetCollectionManager linkedHashSetCollectionManager, ConsoleClient consoleClient) {
         super("remove_greater", "{element}", "remove all items from the collection that exceed the specified");
         this.linkedHashSetCollectionManager = linkedHashSetCollectionManager;
-        this.asker = asker;
         this.consoleClient = consoleClient;
     }
 
@@ -28,6 +27,8 @@ public class RemoveGCommand extends AbstractCommand{
     public boolean execute(String arguments) {
         try {
             if (arguments.isEmpty()) {
+                if(ConsoleClient.fileMode) asker = new Asker(ConsoleClient.getScanners().getLast());
+                else asker = new Asker(ConsoleClient.scanner);
                 Product productToCompare = asker.startAsker();
                 ArrayList<Product> arrayList = new ArrayList<>();
                 for (Product product : linkedHashSetCollectionManager.getSet()) {

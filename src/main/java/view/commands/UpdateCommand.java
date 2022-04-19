@@ -14,11 +14,10 @@ public class UpdateCommand extends  AbstractCommand {
     Asker asker;
     ConsoleClient consoleClient;
 
-    public UpdateCommand(LinkedHashSetCollectionManager linkedHashSetCollectionManager, Asker asker, ConsoleClient consoleClient) {
+    public UpdateCommand(LinkedHashSetCollectionManager linkedHashSetCollectionManager, ConsoleClient consoleClient) {
         super("update_id", "{element}", "update the value of the collection item " +
                 "whose id is the same as the given one");
         this.linkedHashSetCollectionManager = linkedHashSetCollectionManager;
-        this.asker = asker;
         this.consoleClient = consoleClient;
     }
 
@@ -41,6 +40,10 @@ public class UpdateCommand extends  AbstractCommand {
                         throw new WrongFieldComandException("There is no element with the given field \"id\" value");
                     else {
                         long id = Long.parseLong(arguments);
+                        if (ConsoleClient.fileMode) {
+                            asker = new Asker(ConsoleClient.getScanners().getLast());
+                        } else
+                            asker = new Asker(ConsoleClient.scanner);
                         linkedHashSetCollectionManager.addUpdate(asker.startAsker(), id);
                         product.setId(id);
                     }

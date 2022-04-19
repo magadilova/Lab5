@@ -11,8 +11,10 @@ import java.util.Scanner;
 public class FileWorker {
 
     public static String readFile() {
+
+        String environmentVariable = System.getenv("PRODUCTS_FILENAME");
         StringBuilder data = new StringBuilder();
-        try (BufferedReader br = new BufferedReader(new FileReader("fileScr.xml"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(environmentVariable))) {
             String line;
             while ((line = br.readLine()) != null) {
                 data.append(line);
